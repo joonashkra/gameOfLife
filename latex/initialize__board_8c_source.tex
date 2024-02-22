@@ -1,0 +1,33 @@
+\hypertarget{initialize__board_8c_source}{}\doxysection{initialize\+\_\+board.\+c}
+\mbox{\hyperlink{initialize__board_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00001}00001\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00002}00002\ \textcolor{comment}{*\ \ \ \ HEADER\ FILES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00003}00003\ \textcolor{comment}{*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{headers_8h}{headers.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00009}00009\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00010}00010\ \textcolor{comment}{\ \ \ \ F\ U\ N\ C\ T\ I\ O\ N\ \ \ \ D\ E\ S\ C\ R\ I\ P\ T\ I\ O\ N}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00011}00011\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00012}00012\ \textcolor{comment}{\ NAME:\ initialize\_board}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00013}00013\ \textcolor{comment}{\ DESCRIPTION:\ Places\ random\ alive\ entries\ on\ board\ on\ start\ of\ the\ game}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00014}00014\ \textcolor{comment}{\ \ \ \ Input:\ Board}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00015}00015\ \textcolor{comment}{\ \ \ \ Output:\ Random\ alive\ entries\ on\ board}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00016}00016\ \textcolor{comment}{\ \ Used\ global\ variables:\ HEIGHT,\ WIDTH}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00017}00017\ \textcolor{comment}{*********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00025}\mbox{\hyperlink{headers_8h_a0ea06c54ba089abfe4852583a1d54195}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{initialize__board_8c_a0ea06c54ba089abfe4852583a1d54195}{initialize\_board}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcell}{cell}}\ board[\mbox{\hyperlink{headers_8h_aed89bd71aee8be823e8a20ec4e093c1e}{HEIGHT}}][\mbox{\hyperlink{headers_8h_a241aeeb764887ae5e3de58b98f04b16d}{WIDTH}}])\ \{}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00026}00026\ \ \ \ \ srand(time(NULL));\ \textcolor{comment}{//Random\ number\ generator}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{headers_8h_aed89bd71aee8be823e8a20ec4e093c1e}{HEIGHT}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \mbox{\hyperlink{headers_8h_a241aeeb764887ae5e3de58b98f04b16d}{WIDTH}};\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ random\_number\ =\ rand()\ \%\ 2;\ \textcolor{comment}{//Generate\ a\ random\ number\ between\ 0\ and\ 1\ (dead\ or\ alive)}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ board[i][j].current\ =\ random\_number;\ \textcolor{comment}{//Set\ that\ number\ to\ a\ cell}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ board[i][j].future\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{initialize__board_8c_source_l00034}00034\ \}}
+
+\end{DoxyCode}

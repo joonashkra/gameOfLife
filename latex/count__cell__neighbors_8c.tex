@@ -1,0 +1,58 @@
+\hypertarget{count__cell__neighbors_8c}{}\doxysection{count\+\_\+cell\+\_\+neighbors.\+c File Reference}
+\label{count__cell__neighbors_8c}\index{count\_cell\_neighbors.c@{count\_cell\_neighbors.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}headers.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{count__cell__neighbors_8c_aac9f679b508f2763111f6745ddcc249c}{count\+\_\+cell\+\_\+neighbors}} (struct \mbox{\hyperlink{structcell}{cell}} board\mbox{[}\mbox{\hyperlink{headers_8h_aed89bd71aee8be823e8a20ec4e093c1e}{HEIGHT}}\mbox{]}\mbox{[}\mbox{\hyperlink{headers_8h_a241aeeb764887ae5e3de58b98f04b16d}{WIDTH}}\mbox{]}, int row, int column)
+\begin{DoxyCompactList}\small\item\em Function checks current situation of the board and counts the amount of neighbors a cell has. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{count__cell__neighbors_8c_aac9f679b508f2763111f6745ddcc249c}\label{count__cell__neighbors_8c_aac9f679b508f2763111f6745ddcc249c}} 
+\index{count\_cell\_neighbors.c@{count\_cell\_neighbors.c}!count\_cell\_neighbors@{count\_cell\_neighbors}}
+\index{count\_cell\_neighbors@{count\_cell\_neighbors}!count\_cell\_neighbors.c@{count\_cell\_neighbors.c}}
+\doxysubsubsection{\texorpdfstring{count\_cell\_neighbors()}{count\_cell\_neighbors()}}
+{\footnotesize\ttfamily int count\+\_\+cell\+\_\+neighbors (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcell}{cell}}}]{board\mbox{[}\+HEIGHT\mbox{]}\mbox{[}\+WIDTH\mbox{]},  }\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+
+
+Function checks current situation of the board and counts the amount of neighbors a cell has. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The board of cells where alive/dead entries are placed \\
+\hline
+{\em row} & The row of the cell \\
+\hline
+{\em column} & The column index of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Amount of Neighbors 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{count__cell__neighbors_8c_source_l00025}{25}} of file \mbox{\hyperlink{count__cell__neighbors_8c_source}{count\+\_\+cell\+\_\+neighbors.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ neighbor\_count\ =\ 0;\ \textcolor{comment}{//Create\ a\ variable\ to\ store\ the\ amount\ of\ neighbors\ ///a\ variable\ to\ store\ the\ amount\ of\ neighbors}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=row-\/1;\ i<=row+1;\ i++)\ \{\ \textcolor{comment}{//Loop\ through\ cell's\ neighbors\ }}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=column-\/1;\ j<=column+1;\ j++)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ row\ \&\&\ j\ ==\ column)\ \{\ \textcolor{comment}{//Don't\ count\ in\ the\ cell\ itself}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (board[(i+\mbox{\hyperlink{headers_8h_aed89bd71aee8be823e8a20ec4e093c1e}{HEIGHT}})\%\mbox{\hyperlink{headers_8h_aed89bd71aee8be823e8a20ec4e093c1e}{HEIGHT}}][(j+\mbox{\hyperlink{headers_8h_a241aeeb764887ae5e3de58b98f04b16d}{WIDTH}})\%\mbox{\hyperlink{headers_8h_a241aeeb764887ae5e3de58b98f04b16d}{WIDTH}}].current\ ==\ 1)\ \{\ \textcolor{comment}{//If\ a\ neighbor\ is\ alive,\ increment\ neighbor\ count}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neighbor\_count++;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{return}\ neighbor\_count;\ \textcolor{comment}{//Return\ the\ amount\ of\ neighbors}}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}

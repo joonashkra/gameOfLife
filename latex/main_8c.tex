@@ -1,0 +1,63 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}headers.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em The main function\+: initializes game-\/board, initializes ncurses and sets colors, executes game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The main function\+: initializes game-\/board, initializes ncurses and sets colors, executes game. 
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00050}{50}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//Create\ a\ two-\/dimensional\ array\ and\ initializing\ all\ elements\ to\ zero\ (No\ one\ is\ alive)}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcell}{cell}}\ board[\mbox{\hyperlink{headers_8h_aed89bd71aee8be823e8a20ec4e093c1e}{HEIGHT}}][\mbox{\hyperlink{headers_8h_a241aeeb764887ae5e3de58b98f04b16d}{WIDTH}}]\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//Initialize\ ncurses}}
+\DoxyCodeLine{00055\ \ \ \ \ initscr();}
+\DoxyCodeLine{00056\ \ \ \ \ cbreak();}
+\DoxyCodeLine{00057\ \ \ \ \ noecho();}
+\DoxyCodeLine{00058\ \ \ \ \ curs\_set(FALSE);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ colors}}
+\DoxyCodeLine{00061\ \ \ \ \ start\_color();}
+\DoxyCodeLine{00062\ \ \ \ \ init\_pair(\mbox{\hyperlink{headers_8h_ad8beef706da0344be19d59438fcdab6d}{ALIVE}},\ COLOR\_RED,\ COLOR\_BLACK);}
+\DoxyCodeLine{00063\ \ \ \ \ init\_pair(\mbox{\hyperlink{headers_8h_a3c8793c7acb4598d2ebcd8288f29ee69}{DEAD}},\ COLOR\_BLACK,\ COLOR\_BLACK);}
+\DoxyCodeLine{00064\ \ \ \ \ refresh();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//Initialize\ board\ with\ random\ alive\ cells}}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{headers_8h_a0ea06c54ba089abfe4852583a1d54195}{initialize\_board}}(board);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//Print\ game\ and\ continue\ until\ user\ presses\ 'q'}}
+\DoxyCodeLine{00070\ \ \ \ \ timeout(50);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ end\_game;\ \textcolor{comment}{//Create\ a\ variable\ for\ checking\ if\ user\ wants\ to\ end\ game}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{headers_8h_ac2558ee4da903f82960b2b81b2d4dbf6}{print\_board}}(board);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{headers_8h_ab0fac42eef9a2918bda8f43f96f2b720}{update\_board}}(board);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ refresh();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ end\_game\ =\ getch();\ \textcolor{comment}{//Check\ value\ of\ end\_game}}
+\DoxyCodeLine{00077\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (end\_game\ !=\ \textcolor{charliteral}{'q'});\ \textcolor{comment}{//If\ user\ pressed\ 'q',\ end\ game}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ endwin();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}
